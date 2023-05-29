@@ -5,7 +5,8 @@
     }
   },
   "routes": [
-    { "src": "/(.*)", "dest": "/chatgpt-3-main/$1" }
+    { "src": "/chatgpt-3-main/(.*)", "dest": "/chatgpt-3-main/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ],
   "env": {
     "NOW_PHP_FOO": "bar3"
