@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "chatgpt-3-main/**/*.php": {
+      "runtime": "vercel-php@0.6.0"
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/chatgpt-3-main/api/$1" },
+    { "src": "/ini/(.*)", "dest": "/chatgpt-3-main/ini/$1" },
+    { "src": "/ext/(.*)", "dest": "/chatgpt-3-main/ext/$1" },
+    { "src": "/(.*)", "dest": "/chatgpt-3-main/$1" }
+  ],
+  "env": {
+    "NOW_PHP_FOO": "bar3"
+  },
+  "build": {
+    "env": {
+      "NOW_PHP_DEBUG": "1"
+    }
+  }
+}
