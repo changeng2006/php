@@ -4,12 +4,8 @@
       "runtime": "vercel-php@0.6.0"
     }
   },
-  "routes": [
-    { "src": "/chatgpt-3-main/(.*)", "dest": "/chatgpt-3-main/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ],
   "env": {
-    "NOW_PHP_FOO": "bar3"
+    "PHP_CLI_SERVER_WORKERS": "4"
   },
   "build": {
     "env": {
