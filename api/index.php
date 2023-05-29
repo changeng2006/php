@@ -57,11 +57,13 @@ $type = "个人";
                                 <input type="password" id="key" style="border:1px solid grey;display:block;max-width:270px;width:calc(100% - 70px);" onload="this.focus();">
                             </div>
 -->
+                           <!--
                             <div class="input-group">
                                 <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;连续对话：</span>
                                 <input type="checkbox" id="keep" checked="" style="min-width:220px;">
                                 <label for="keep"></label>
                             </div>
+-->
                             <div class="input-group">
                                 <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;预设话术：</span>
                                 <select id="preset-text" onchange="insertPresetText()" style="width:calc(100% - 90px);max-width:280px;">
