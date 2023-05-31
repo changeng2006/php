@@ -4,12 +4,9 @@
       "runtime": "vercel-php@0.6.0"
     }
   },
-   "env": {
+  "env": {
     "PHP_CLI_SERVER_WORKERS": "4"
   },
-  "routes": [
-    { "src": "/(.*)", "dest": "/api/$1" }
-  ],
   "build": {
     "env": {
       "NOW_PHP_DEBUG": "1"
