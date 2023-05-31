@@ -1,393 +1,106 @@
-<h1 align=center>PHP Runtime for <a href="https://vercel.com">Vercel</h1>
+# chatgpt
 
-<p align=center>
-  Enjoyable & powerful 🐘 PHP Runtime (<a href="https://php.vercel.app">php.vercel.app</a>) for Vercel platform.
-</p>
+**写在最前：**
 
-<p align=center>
-  <a href="https://www.npmjs.com/package/vercel-php"><img src="https://badgen.net/npm/v/vercel-php"></a>
-  <a href="https://www.npmjs.com/package/vercel-php"><img src="https://badgen.net/npm/dt/vercel-php"></a>
-  <a href="https://github.com/juicyfx/vercel-php/actions"><img src="https://badgen.net/github/checks/juicyfx/vercel-php"></a>
-	<a href="https://bit.ly/f3l1xdis"><img src="https://badgen.net/badge/support/discussions/yellow"></a>
-	<a href="http://bit.ly/f3l1xsponsor"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
-</p>
+ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全可以作为生产力工具应用在很多领域。可以说ChatGPT是最近几年又一个的巨大风口，目前大量投资机构和政府部门都在鼓励和支持相关行业的发展。如果您也有使用ChatGPT赚钱或创业的想法，欢迎免费进群讨论，二维码在本文最后。群里有很多志同道合的朋友一起分享资讯，分享知识，对接资源。另外请点下右上角的小星星，方便您随时找到本项目。
 
-<p align=center>
-  <a href="https://github.com/nette"><img src="https://github.com/nette.png" width="128"></a>
-  <a href="https://github.com/symfony"><img src="https://github.com/symfony.png" width="128"></a>
-  <a href="https://github.com/illuminate"><img src="https://github.com/illuminate.png" width="128"></a>
-  <a href="https://github.com/slimphp"><img src="https://github.com/slimphp.png" width="128"></a>
-  <a href="https://github.com/phalcon"><img src="https://github.com/phalcon.png" width="128"></a>
-</p>
+**首次使用配置：**
 
-<p align=center><strong>🏋️‍♀️ It works with these frameworks and tools. Discover more at <a href="https://github.com/juicyfx/vercel-examples">examples</a>.</strong></p>
+请访问 http://你的域名/key.php 配置您的API_KEY列表，程序将全局自动循环调用。默认用户名：admin，默认密码：admin@2023。默认用户名密码可以在key.php文件中修改。
 
-<p align=center>
-Made with  ❤️  by <a href="https://github.com/f3l1x">@f3l1x</a> (<a href="https://f3l1x.io">f3l1x.io</a>) • 🐦 <a href="https://twitter.com/xf3l1x">@xf3l1x</a>
-</p>
+**本项目完全开源，是PHP版调用OpenAI的API接口进行问答的Demo，有以下特性和功能：**
 
------
+1. 对PHP版本无要求，不需要数据库。核心代码只有几个文件，没用任何框架，修改调试很方便。
+2. 采用stream流模式通信，一边生成一边输出，响应速度全网最快。
+3. 支持GPT-3.5-Turbo和GPT-4等各种模型（后者需要修改下默认model名称）。
+4. 支持Markdown格式文本显示，如表格、代码块。对代码进行了着色，提供了代码复制按钮，支持公式显示。
+5. 支持多行输入，文本框高度自动调节，手机和PC端显示都已做适配。
+6. 支持一些预设话术，支持上下文连续对话，AI回答途中可以随时打断。
+7. 支持错误处理，OpenAI接口返回错误时可以看到具体原因。
+8. 可以实现区分内外网IP，内网直接访问，外网通过BASIC认证后可访问。
+9. 可以实现页面输入自定义API_KEY使用，方便分享给网友或朋友使用。
+10. 服务器自动记录所有访问者的对话日志和IP地址，方便管理员查询。
+11. 支持API_KEY自动轮询，解决5美元账户每分钟限制查询3次的问题。
+12. 支持调用OpenAI官方接口画图，提问的第一个字是“画”即可生成图片。
 
-## 😎 Getting Started
+**本项目定位是个人或朋友之间分享使用，轻量设计，不计划引入数据库等复杂功能。有需要的用户可以自行拿去修改，版权没有，改动不究。对于项目UI或其他功能有改进想法的朋友欢迎提交PR，或者在Issues或Discussions进行讨论。**
 
-Let's picture you want to deploy your awesome microproject written in PHP and you don't know where. You have found [Vercel](https://vercel.com) it's awesome, but for static sites. Not anymore! I would like to introduce you your new best friend `vercel-php`, PHP runtime for Vercel platform.
+------
+# 测试网址：http://mm1.ltd
+![t1](https://user-images.githubusercontent.com/5563148/232330560-1b6a45f3-fcc1-4d3e-a2f7-b1c9878fe9cd.jpg)
+![t2](https://user-images.githubusercontent.com/5563148/232330566-c6ea7fb3-474f-45e4-adda-37f3db27b92a.jpg)
+![t3](https://github.com/dirk1983/chatgpt/assets/5563148/732b5bed-7e9c-4c07-9865-9b97957781a7)
 
-Most simple example project is this one, using following project structure.
 
-```sh
-project
-├── api
-│   └── index.php
-└── vercel.json
-```
+------
+**本项目常见问题：**
 
-First file `api/index.php` is entrypoint of our application. It should be placed in **api** folder, it's very standard location for Vercel.
+1. 在国内环境使用提示OpenAI连接超时
 
-```php
-<?php
-phpinfo();
-```
+是的，OpenAI官方不支持中国（含港澳台地区）IP访问接口。有以下几种解决方案：
 
-Second file `vercel.json` is pure gold here. Setup your project with configuration like this and voila. That's all.
+a. 使用境外服务器部署本项目，如美国、韩国、日本等，比如腾讯云日本就可以。
 
-```json
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  }
-}
-```
+b. 如果本项目部署在电脑上，可以用电脑上的HTTP-PROXY代理，把stream.php里面注释掉的“curl_setopt($ch, CURLOPT_PROXY, " http://127.0.0.1:1081 ");”修改一下即可。
 
-Last thing you have to do is call `vercel`. If you are more interested take a look at features and usage.
+c. 使用反向代理服务，将OpenAI接口地址反代到某个网址，把“curl_setopt($ch, CURLOPT_URL, ' https://api.openai.com/v1/chat/completions ');”这行里面的网址改成反代后的网址即可。
 
-```
-# Install it globally
-npm i -g vercel
+使用后两种解决方案的时候可能会因为代理的缓存机制造成stream模式的实时性受影响，另外可能也增加了额外的访问延迟。
 
-# Log in
-vercel login
+2. 关于反向代理的配置方式
 
-# Let's fly
-vercel
-```
+如果你有海外服务器，使用nginx反代最简单，修改配置文件，增加一两行代码即可实现，具体方式自行搜索。如果没有海外服务器，可以用cf worker免费建一个，前提是你要有一个域名，几块钱就能注册一个。搭建自己的cf worker教程在这里：https://github.com/noobnooc/noobnooc/discussions/9 。如果你连域名也不想注册，也可以用别人现成的反代地址，比如下面这个：https://openai.1rmb.tk/v1/chat/completions 。地址是群友提供的，不确定什么时候失效，用的人比较多时可能会有点卡，大家也可以进群求一个。
 
-Are you ready to deploy your first PHP project to Vercel? Click & Go!
+3. 关于Stream流模式的原理，为什么你部署的不像我的那么快
 
-<a href="https://vercel.com/new/project?template=https://github.com/juicyfx/vercel-examples/tree/master/php"><img src="https://vercel.com/button"></a>
+本项目前端使用的是Javascript的EventSource方式与后端进行通信，可以实现数据的流模式即时传输，而OpenAI接口也是支持数据实时生成实时传输的，因此才能实现问答的秒回。EventSource模式的缺点是不支持POST方式传递数据，GET方式对数据长度有限制，cookie也有限制，所以选择了分两步请求后端，采用SESSION传递数据。至于为什么你用我的代码部署的网站速度比较慢，主要原因除了服务器的问题，可能还有PHP环境的问题。PHP如果想实现流式输出需要关闭输出缓存，可能需要修改apache或nginx及php.ini的配置，具体修改方式可以自行搜索或者到群里问群友。
 
-## 🤗 Features
+4. 如果想实现像Demo站一样输入API_KEY才能使用的功能，怎么修改代码
 
-- **Architecture**: PHP development server (🚀 fast enough)
-- **PHP version**: 8.2 (https://example-php-8-2.vercel.app)
-- **Extensions**: apcu, bcmath, brotli, bz2, calendar, Core, ctype, curl, date, dom, ds, exif, fileinfo, filter, ftp, geoip, gettext, hash, iconv, igbinary, imap, intl, json, libxml, lua, mbstring, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, protobuf, readline, redis, Reflection, runkit7, session, SimpleXML, soap, sockets, sodium, SPL, sqlite3, standard, swoole, timecop, tokenizer, uuid, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zlib, zip
-- **Speed**: cold ~250ms / warm ~5ms
-- **Memory**: ~90mb
-- **Frameworks**: Nette, Symfony, Lumen, Slim, Phalcon
+在index.php文件中取消掉相关的注释就行了，为了美观建议把上面的“连续对话”部分注释掉，要不然手机访问不是很友好。注释“连续对话”不影响网站运行，默认就是包含上下文的连续对话。
 
-> List of all installable extensions is on this page https://blog.remirepo.net/pages/PECL-extensions-RPM-status.
+5. 是否支持docker？
 
-## 💯 Versions
-
-- `vercel-php@0.6.0` - PHP 8.2.x (https://example-php-8-2.vercel.app)
-- `vercel-php@0.5.3` - PHP 8.1.x (https://example-php-8-1.vercel.app)
-- `vercel-php@0.4.1` - PHP 8.0.x (https://example-php-8-0.vercel.app)
-- `vercel-php@0.3.3` - PHP 7.4.x (https://example-php-7-4.vercel.app)
-
-## ⚙️  Usage
-
-Before you can start using this runtime, you should learn about Vercel and [how runtimes](https://vercel.com/docs/runtimes?query=runtime#official-runtimes) works. Take a look at blogpost about [`Serverless Functions`](https://vercel.com/blog/customizing-serverless-functions).
-
-You should define `functions` property in `vercel.json` and list PHP files directly or using wildcard (*).
-If you need to route everything to index, use `routes` property.
-
-```json
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  },
-  "routes": [
-    { "src": "/(.*)",  "dest": "/api/index.php" }
-  ]
-}
-```
-
-Do you have more questions (❓)? Let's move to [FAQ](#%EF%B8%8F-faq).
-
-## 👨‍💻 `vercel dev`
-
-For running `vercel dev` properly, you need to have PHP installed on your computer, [learn more](errors/now-dev-no-local-php.md).
-But it's PHP and as you know PHP has built-in development server. It works out of box.
+有网友提出想使用docker方式运行本项目，其实随便找一个nginx+php环境的docker，把path指向本项目所在的目录就行了。这里提供热心网友提供的docker镜像：gindex/nginx-php。使用方式如下：
 
 ```
-php -S localhost:8000 api/index.php
+docker pull gindex/nginx-php
+docker run -itd -v /root/chatgpt(本地目录):/usr/share/nginx/html --name nginx-php -p 8080(主机端口):80 --restart=always gindex/nginx-php
 ```
 
-## 👀 Demo
+还有另一位热心网友基于本项目在github上的docker版chatgpt，网址：https://github.com/hsmbs/chatgpt-php ，也可以用。
 
-- official - https://php.vercel.app/
-- phpinfo - https://phpshow.vercel.app/
-- extensions - https://phpshow.vercel.app/ext/
-- ini - https://phpshow.vercel.app/ini/
-- JSON API - https://phpshow.vercel.app/api/users.php
-- test - https://phpshow.vercel.app/test.php
+6. 是否支持Windows客户端？
 
-![PHP](https://api.microlink.io?url=https://phpshow.vercel.app&screenshot&embed=screenshot.url)
+喜欢使用独立Windows桌面应用的朋友可以下载Release里面的exe文件运行，其实就是一个指向我演示网站的浏览器套个壳。
 
-## 🎯Examples
+7. 有没有可以注册会员的商业运营版？
 
-- [PHP - fast & simple](https://github.com/juicyfx/vercel-examples/tree/master/php/)
-- [Composer - install dependencies](https://github.com/juicyfx/vercel-examples/tree/master/php-composer/)
-- [Framework - Laravel](https://github.com/juicyfx/vercel-examples/blob/master/php-laravel)
-- [Framework - Lumen](https://github.com/juicyfx/vercel-examples/blob/master/php-lumen)
-- [Framework - Nette](https://github.com/juicyfx/vercel-examples/blob/master/php-nette-tracy)
-- [Framework - Phalcon](https://github.com/juicyfx/vercel-examples/blob/master/php-phalcon)
-- [Framework - Slim](https://github.com/juicyfx/vercel-examples/blob/master/php-slim)
-- [Framework - Symfony - Microservice](https://github.com/juicyfx/vercel-examples/blob/master/php-symfony-microservice)
+由于很多群友都有类似需求，我开发了一个款基于PHP+Mysql环境的商业版软件，已正式发布。有兴趣的话您可以访问这里查看详情：https://github.com/dirk1983/chatgpt_commercial
 
-Browse [more examples](https://github.com/juicyfx/vercel-examples). 👀
+------
 
-## 📜 Resources
+附OpenAI官网的模型和接口调用介绍：
 
-- [2019/10/23 - Code Examples](https://github.com/trainit/2019-10-hubbr-zeit)
-- [2019/10/19 - ZEIT - Deploy Serverless Microservices Right Now](https://slides.com/f3l1x/2019-10-19-zeit-deploy-serverless-microservices-right-now-vol2)
-- [2019/08/23 - Code Examples](https://github.com/trainit/2019-08-serverless-zeit-now)
-- [2019/07/07 - Bleeding Edge PHP on ZEIT Now](https://dev.to/nx1/bleeding-edge-php-on-zeit-now-565g)
-- [2019/06/06 - Code Examples](https://github.com/trainit/2019-06-zeit-now)
-- [2019/06/05 - ZEIT - Deploy Serverless Microservices Right Now](https://slides.com/f3l1x/2019-06-05-zeit-deploy-serverless-microservices-right-now) ([VIDEO](https://www.youtube.com/watch?v=IwhEGNDx3aE))
+https://platform.openai.com/docs/models/moderation
 
-## 🚧 Roadmap
+https://platform.openai.com/docs/api-reference/chat/create
 
-See [roadmap issue](https://github.com/juicyfx/vercel-php/issues/3). Help wanted.
+https://platform.openai.com/docs/guides/chat/introduction
 
-## ⁉️ FAQ
+https://platform.openai.com/docs/api-reference/models/list
 
-<details>
-  <summary>1. How to use more then one endpoint (index.php)?</summary>
+------
+**对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。**
 
-```sh
-project
-├── api
-│   ├── index.php
-│   ├── users.php
-│   └── books.php
-└── vercel.json
-```
+由于群里人数已超过200，无法直接扫码进群，想进群的朋友可以加热心网友小号，由他帮忙拉进群。
 
-```
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
+![微信截图_20230306154434](https://user-images.githubusercontent.com/5563148/223048985-4cac05cb-acf0-4f04-aad5-1c3dcec609d0.png)
 
-    // Can be list also directly
 
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/users.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/books.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  }
-}
-```
+有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。
 
-</details>
+![打赏码](https://user-images.githubusercontent.com/5563148/222968018-9def451a-bbce-4a7e-bde6-edecc7ced40f.jpg)
 
-<details>
-  <summary>2. How to route everything to index?</summary>
-
-```json
-{
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  },
-  "routes": [
-    { "src": "/(.*)",  "dest": "/api/index.php" }
-  ]
-}
-```
-
-</details>
-
-<details>
-  <summary>3. How to update memory limit?</summary>
-
-Additional function properties are `memory`, `maxDuration`. Learn more about [functions](https://vercel.com/docs/configuration#project/functions).
-
-```json
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0",
-      "memory": 3008,
-      "maxDuration": 60
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-  <summary>4. How to use it with <a href="https://getcomposer.org/">Composer</a>?</summary>
-
-Yes, [Composer](https://getcomposer.org/) is fully supported.
-
-```sh
-project
-├── api
-│   └── index.php
-├── composer.json
-└── vercel.json
-```
-
-```json
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  }
-}
-```
-
-```json
-{
-  "require": {
-    "php": "^8.1",
-    "tracy/tracy": "^2.0"
-  }
-}
-```
-
-It's also good thing to create `.vercelignore` file and put `/vendor` folder to this file. It will not upload
-`/vendor` folder to Vercel platform.
-
-</details>
-
-<details>
-  <summary>5. How to override <a href="https://www.php.net/manual/en/ini.list.php">php.ini</a> / <a href="https://www.php.net/manual/en/configuration.file.php">php configuration</a> ?</summary>
-
-Yes, you can override php configuration. Take a look at [default configuration](https://phpshow.vercel.app/) at first.
-Create a new file `api/php.ini` and place there your configuration. Don't worry, this particulary file will be
-removed during building phase on Vercel.
-
-```sh
-project
-├── api
-│   ├── index.php
-│   └── php.ini
-└── vercel.json
-```
-
-```json
-{
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  }
-}
-```
-
-```json
-# Disable some functions
-disable_functions = "exec, system"
-
-# Update memory limit
-memory_limit=1024M
-```
-
-</details>
-
-<details>
-  <summary>6. How to exclude some files or folders ?</summary>
-
-Runtimes support excluding some files or folders, [take a look at doc](https://vercel.com/docs/configuration?query=excludeFiles#project/functions).
-
-```json
-{
-  "functions": {
-  "api/**/*.php": {
-    "runtime": "vercel-php@0.6.0",
-    "excludeFiles": "{foo/**,bar/config/*.yaml}",
-  }
-}
-```
-
-If you want to exclude files before uploading them to Vercel, use `.vercelignore` file.
-
-</details>
-
-<details>
-  <summary>7. How to call composer script(s) ?</summary>
-
-Calling composer scripts during build phase on Vercel is supported via script named `vercel`. You can easilly call php, npm or node.
-
-```json
-{
-  "require": { ... },
-  "require-dev": { ... },
-  "scripts": {
-    "vercel": [
-      "@php -v",
-      "npm -v"
-    ]
-  }
-}
-```
-
-Files created during `composer run vercel` script can be used (require/include) in your PHP lambdas, but can't be accessed from browser (like assets). If you still want to access them, create fake `assets.php` lambda and require them. [Example of PHP satis](https://github.com/juicyfx/vercel-examples/tree/master/php-satis).
-
-</details>
-
-<details>
-  <summary>8. How to include some files of folders?</summary>
-
-If you are looking for [`config.includeFiles`](https://vercel.com/docs/configuration?query=includeFiles#project/functions) in runtime, unfortunately you can't include extra files.
-All files in root folder are uploaded to Vercel, use `.vercelignore` to exclude them before upload.
-
-</details>
-
-<details>
-  <summary>9. How to develop locally?</summary>
-
-I think the best way at this moment is use [PHP Development Server](https://www.php.net/manual/en/features.commandline.webserver.php).
-
-```
-php -S localhost:8000 api/index.php
-```
-
-</details>
-
-## 👨🏻‍💻CHANGELOG
-
-Show me [CHANGELOG](./CHANGELOG.md)
-
-## 🧙Contribution
-
-1. Clone this repository.
-   - `git clone git@github.com:juicyfx/vercel-php.git`
-2. Install NPM dependencies
-   - `make install`
-3. Make your changes
-4. Run TypeScript compiler
-   - `make build`
-5. Run tests
-   - `make test`
-6. Create a PR
-
-## 📝 License
-
-Copyright © 2019 [f3l1x](https://github.com/f3l1x).
-This project is [MIT](LICENSE) licensed.
+最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现ChatGPT聊天机器人的功能，已开源，需要的朋友也可以拿去。
+https://github.com/dirk1983/chatgpt-wechat-personal
